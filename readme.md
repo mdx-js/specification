@@ -8,6 +8,7 @@
 - [MDXAST](#mdxast)
 - [MDXHAST](#mdxhast)
 - [Related](#related)
+- [Authors](#authors)
 
 ## Why?
 
