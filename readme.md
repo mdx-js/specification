@@ -7,6 +7,7 @@
 - [MDX](#mdx)
 - [MDXAST](#mdxast)
 - [MDXHAST](#mdxhast)
+- [Plugins](#plugins)
 - [Related](#related)
 - [Authors](#authors)
 
@@ -242,6 +243,77 @@ MDXHAST is a superset of HAST, with four additional node types:
 - `inlineCode`
 
 It's also important to note that an MDX document that contains no JSX or imports results in a valid HAST.
+
+## Plugins
+
+The `@mdx-js/mdx` implementation is pluggable at multiple stages in the transformation.
+This allows not only for retext/remark/rehype transformations, but also access to the powerful utility libraries these ecosystems offer.
+
+Remark/MDX processing is async, so any plugin that returns a promise will be `await`ed.
+
+### MDAST plugins
+
+When the MDX library receives text, it uses `remark-parse` to parse the raw content into an MDAST.
+MDX then uses a few formatting plugins to ensure the MDAST is cleaned up.
+At this stage, users have the ability to pass any (optional) plugins to manipulate the MDAST.
+
+```js
+const jsx = mdx(myMDX, { mdPlugins: [myPlugin] })
+```
+
+Let's consider the following default `remark-images` plugin that MDX uses.
+This plugin automatically turns a paragraph that consists of only an image link into an image node.
+
+```js
+const isUrl = require('is-url')
+const visit = require('unist-util-visit')
+
+const isImgUrl = str => /\.(svg|png|jpg|jpeg)/.test(str)
+
+module.exports = () => (tree, file) =>
+  visit(tree, 'text', node => {
+    const text = node.value ? node.value.trim() : ''
+
+    if (!isUrl(text) || !isImgUrl(text)) {
+      return
+    }
+
+    node.type = 'image'
+    node.url = text
+
+    delete node.value
+  })
+```
+
+Not bad. The `unist-util-visit` utility library makes it terse to select nodes we care about, we check it for a few conditions, and manipulate the node if it's what we're looking for.
+
+### HAST plugins
+
+HAST plugins operate similarly to MDAST plugins, except they have a different AST spec that defines it.
+
+```js
+const jsx = mdx(myMDX, { hastPlugins: [myPlugin] })
+```
+
+Let's consider another example plugin which asynchronously requests an image's size and sets it as attributes on the node.
+
+```js
+await mdx(myMDX, {
+  hastPlugins: [
+    () => tree => {
+      const imgPx = selectAll('img', tree).map(async node => {
+      const size = await requestImageSize(node.properties.src)
+        node.properties.width = size.width
+        node.properties.height = size.height
+      })
+
+      return Promise.all(imgPx).then(() => tree)
+    }
+  ]
+})
+```
+
+Note that this might want to also take an optional argument for the max width of its container for a truly solid layout, but this is a proof of concept.
 
 ## Related
 
