@@ -3,6 +3,7 @@
 [MDX](https://github.com/mdx-js/mdx) language and abstract syntax tree definitions.
 
 - [Why?](#why)
+- [How does it work?](#how-does-it-work)
 - [MDX](#mdx)
 - [MDXAST](#mdxast)
 - [MDXHAST](#mdxhast)
@@ -11,6 +12,20 @@
 
 In order to ensure a vibrant ecosystem and community, tooling needs to exist for formatting, linting, and plugins.
 This tooling requires a foundational specification and abstract syntax tree so that parsing is properly handled before transforming to JSX/Hyperscript/React/etc and potentially leveraging existing plugin ecosystems.
+
+[mdx-js/mdx](https://github.com/mdx-js/mdx) uses Remark to parse Markdown into an MDAST which is transpiled to MDXAST.
+This allows for the rich [unified](https://github.com/unifiedjs) plugin ecosystem to be utilized while also ensuring a more robust parsing implementation by sharing the Remark parser library.
+
+## How does it work?
+
+The MDX transpilation flow consists of six steps, ultimately resulting in JSX that can be used in React/Preact/etc.
+
+1. _Parse_: Text => MDAST
+1. _Transpile_: MDAST => MDXAST
+1. _Transform_: MDX/Remark plugins applied to AST
+1. _Transpile_: MDXAST => MDXHAST
+1. _Transform_: Hyperscript plugins applied to AST
+1. _Transpile_: MDXHAST => JSX
 
 ## MDX
 
@@ -81,7 +96,23 @@ import { Logo } from './ui'
 And here's a paragraph
 ```
 
-## Element to component mapping
+### Images
+
+Embedding images is easier to remember, you can simply link a url.
+
+```md
+Below will render an image:
+
+https://c8r-x0.s3.amazonaws.com/lab-components-macbook.jpg
+```
+
+The following file types are supported:
+
+- `png`
+- `svg`
+- `jpg`
+
+### Element to component mapping
 
 It's often be desirable to map React components to their HTML element equivalents, adding more flexibility to many usages of React that might not want a plain HTML element as the output.
 This is useful for component-centric projects using CSS-in-JS and other projects.
@@ -200,4 +231,12 @@ export { foo: 'bar' }
 
 ## MDXHAST
 
-TODO
+The majority of the MDXHAST specification is defined by [HAST](https://github.com/syntax-tree/hast).
+MDXHAST is a superset of HAST, with four additional node types:
+
+- `jsx`
+- `import`
+- `export`
+- `inlineCode`
+
+It's also important to note that an MDX document that contains no JSX or imports results in a valid HAST.
