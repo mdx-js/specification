@@ -1,8 +1,6 @@
-# AST
+# Specification
 
 [MDX](https://github.com/mdx-js/mdx) language and abstract syntax tree definitions.
-
-## Table of Contents
 
 - [Why?](#why)
 - [MDX](#mdx)
