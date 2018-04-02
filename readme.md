@@ -279,7 +279,7 @@ If you have related work or prior art we've failed to reference, please open a P
 
 ## Authors
 
-- John Otander ([@4lpine](https://twitter.com/4lpine)) - [Compositor](https://compositor.io) + [Clearbit](https://clearbit.com)
+- John Otander ([@4lpine](https://twitter.com/4lpine)) – [Compositor](https://compositor.io) + [Clearbit](https://clearbit.com)
 - Tim Neutkens ([@timneutkens](https://github.com/timneutkens)) – [ZEIT](https://zeit.co)
 - Guillermo Rauch ([@rauchg](https://twitter.com/rauchg)) – [ZEIT](https://zeit.co)
-- Brent Jackson ([@jxnblk](https://twitter.com/jxnblk)) - [Compositor](https://compositor.io)
+- Brent Jackson ([@jxnblk](https://twitter.com/jxnblk)) – [Compositor](https://compositor.io)
