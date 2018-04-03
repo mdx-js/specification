@@ -118,7 +118,7 @@ The following file types are supported:
 ### Element to component mapping
 
 It's often be desirable to map React components to their HTML element equivalents, adding more flexibility to many usages of React that might not want a plain HTML element as the output.
-This is useful for component-centric projects using CSS-in-JS and other projects.
+This is useful for component-centric projects.
 
 ```jsx
 import React from 'react'
@@ -149,14 +149,14 @@ It's also important to note that an MDX document that contains no JSX or imports
 
 ### Differences to MDAST
 
-The `import` type is used to provide the necessary block elements to the remark html block parser and for the execution context/implementation.
+The `import` type is used to provide the necessary block elements to the Remark HTML block parser and for the execution context/implementation.
 For example, a [webpack loader](https://github.com/mdx-js/mdx/tree/master/packages/loader) might want to transform an MDX import by appending those imports.
 
 `export` is used to emit data from MDX, similarly to traditional markdown frontmatter.
 
 The `jsx` node would most likely be passed to Babel to create functions.
 
-This will also differ a bit in parsing because the remark parser is built to handle particular html element types, whereas JSX support will require the ability to parse _any_ tag, and those that self close.
+This will also differ a bit in parsing because the remark parser is built to handle particular HTML element types, whereas JSX support will require the ability to parse _any_ tag, and those that self close.
 
 The `jsx`, `import`, and `export` node types are defined below.
 
@@ -174,7 +174,7 @@ interface JSX <: Element {
 }
 ```
 
-For example, the following mdx:
+For example, the following MDX:
 
 ```jsx
 <Heading hi='there'>
@@ -230,6 +230,15 @@ For example, the following MDX:
 
 ```md
 export { foo: 'bar' }
+```
+
+Yields:
+
+```json
+{
+  "type": "export",
+  "value": "export { foo: 'bar' }"
+}
 ```
 
 ## MDXHAST
