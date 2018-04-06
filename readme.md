@@ -326,7 +326,7 @@ Note that this might want to also take an optional argument for the max width of
 
 ## Related
 
-This specification documents the [original `.mdx` proposal](https://spectrum.chat/thread/1021be59-2738-4511-aceb-c66921050b9a) by Guillermo Rauch ([@rauchg](https://twitter.com/4lpine)).
+This specification documents the [original `.mdx` proposal](https://spectrum.chat/thread/1021be59-2738-4511-aceb-c66921050b9a) by Guillermo Rauch ([@rauchg](https://twitter.com/rauchg)).
 
 The following projects, languages, and articles helped to shape MDX either in implementation or inspiration.
 
