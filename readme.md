@@ -72,7 +72,7 @@ It's a mechanism for an imported MDX file to communicate with its parent.
 import { fred, sue } from '../data/authors'
 import Layout from '../components/with-blog-layout'
 
-export {
+export const meta = {
   authors: [fred, sue],
   layout: Layout
 }
