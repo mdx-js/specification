@@ -99,22 +99,6 @@ import { Logo } from './ui'
 And here's a paragraph
 ```
 
-### Images
-
-Embedding images is easier to remember, you can simply link a url.
-
-```md
-Below will render an image:
-
-https://c8r-x0.s3.amazonaws.com/lab-components-macbook.jpg
-```
-
-The following file types are supported:
-
-- `png`
-- `svg`
-- `jpg`
-
 ### Element to component mapping
 
 It's often be desirable to map React components to their HTML element equivalents, adding more flexibility to many usages of React that might not want a plain HTML element as the output.
