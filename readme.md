@@ -338,6 +338,7 @@ These projects define the syntax which MDX blends together (MD and JSX).
 ### Other
 
 - [IA Markdown Content Blocks](https://github.com/iainc/Markdown-Content-Blocks)
+- [Idyll: Markup language for interactive documents](https://idyll-lang.org)
 
 ### Is your work missing?
 
