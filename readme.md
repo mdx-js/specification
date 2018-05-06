@@ -64,7 +64,7 @@ import Video from './video'
 
 ### Exports
 
-ES2015 [`import` syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export) is supported.
+ES2015 [`export` syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export) is supported.
 This can be used to export metadata like layout or authors.
 It's a mechanism for an imported MDX file to communicate with its parent.
 
