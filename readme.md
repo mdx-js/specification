@@ -331,6 +331,7 @@ These projects define the syntax which MDX blends together (MD and JSX).
 ### Libraries
 
 - [MDXC](https://github.com/jamesknelson/mdxc)
+- [Markdown Component Loader](https://github.com/ticky/markdown-component-loader)
 - [markdown-in-js](https://github.com/threepointone/markdown-in-js)
 - [remark-jsx](https://github.com/fazouane-marouane/remark-jsx)
 - [remark-react](https://github.com/mapbox/remark-react)
