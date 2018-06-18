@@ -101,7 +101,7 @@ And here's a paragraph
 
 ### Element to component mapping
 
-It's often be desirable to map React components to their HTML element equivalents, adding more flexibility to many usages of React that might not want a plain HTML element as the output.
+It's often desirable to map React components to their HTML element equivalents, adding more flexibility to many usages of React that might not want a plain HTML element as the output.
 This is useful for component-centric projects.
 
 ```jsx
