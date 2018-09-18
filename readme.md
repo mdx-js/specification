@@ -34,6 +34,8 @@ The MDX transpilation flow consists of six steps, ultimately resulting in JSX th
 
 MDX is superset of the [CommonMark](http://commonmark.org) specification that adds embedded JSX and `import`/`export` syntax.
 
+Media type that should be used to label MDX content is `text/mdx`.
+
 ### Imports
 
 ES2015 [`import` syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) is supported.
