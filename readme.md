@@ -13,11 +13,13 @@
 
 ## Why?
 
-In order to ensure a vibrant ecosystem and community, tooling needs to exist for formatting, linting, and plugins.
-This tooling requires a foundational specification and abstract syntax tree so that parsing is properly handled before transforming to JSX/Hyperscript/React/etc and potentially leveraging existing plugin ecosystems.
+In order to ensure a vibrant ecosystem and community tooling needs to exist for formatting, linting, and plugins.
+This requires a foundational specification and abstract syntax tree so that parsing is properly handled before transforming to JSX/Hyperscript/React/Vue/etc and potentially leveraging existing plugin ecosystems.
 
-[mdx-js/mdx](https://github.com/mdx-js/mdx) uses Remark to parse Markdown into an MDAST which is transpiled to MDXAST.
-This allows for the rich [unified](https://github.com/unifiedjs) plugin ecosystem to be utilized while also ensuring a more robust parsing implementation by sharing the Remark parser library.
+MDX the format is a syntax that can be implemented and parsed in any number of ways. Here we use the remark/unified ecosystem.
+
+[mdx-js/mdx](https://github.com/mdx-js/mdx) uses remark to parse Markdown into an MDAST which is transpiled to MDXAST.
+This allows for the rich [unified](https://github.com/unifiedjs) plugin ecosystem to be utilized while also ensuring a more robust parsing implementation by sharing the remark parser library.
 
 ## How does it work?
 
@@ -34,7 +36,7 @@ The MDX transpilation flow consists of six steps, ultimately resulting in JSX th
 
 MDX is superset of the [CommonMark](http://commonmark.org) specification that adds embedded JSX and `import`/`export` syntax.
 
-Media type that should be used to label MDX content is `text/mdx`.
+The official media type to label MDX content is `text/mdx`.
 
 ### Imports
 
@@ -85,7 +87,7 @@ export const meta = {
 In MDX, all embedded markup is interpreted as JSX.
 Components can be imported for rendering.
 
-#### Block level
+### Block level
 
 JSX can be written at the block level.
 This means that it is rendered as a sibling to other root level elements like paragraphs and headings.
@@ -99,6 +101,39 @@ import { Logo } from './ui'
 <Logo />
 
 And here's a paragraph
+```
+
+### Inline JSX
+
+JSX can be used inline, this is useful for adding labels.
+
+```jsx
+import { Indicator } from './ui'
+
+# Button <Indicator variant="experimental" />
+```
+
+### Fragment syntax
+
+JSX blocks can be opened using JSX fragments `<>Hello!</>`.
+This is how you can achieve interpolation from props passed in.
+
+### Accessing properties
+
+Any JSX block will have access to props. This can be done inline or at the block level.
+
+#### Inline
+
+```jsx
+# Hello, from <>{props.from}</>!
+```
+
+#### Block
+
+```js
+# Hello, world!
+
+<pre>{JSON.stringify(props, null, 2)}</pre>
 ```
 
 ### Element to component mapping
@@ -135,7 +170,7 @@ It's also important to note that an MDX document that contains no JSX or imports
 
 ### Differences to MDAST
 
-The `import` type is used to provide the necessary block elements to the Remark HTML block parser and for the execution context/implementation.
+The `import` type is used to provide the necessary block elements to the remark HTML block parser and for the execution context/implementation.
 For example, a [webpack loader](https://github.com/mdx-js/mdx/tree/master/packages/loader) might want to transform an MDX import by appending those imports.
 
 `export` is used to emit data from MDX, similarly to traditional markdown frontmatter.
