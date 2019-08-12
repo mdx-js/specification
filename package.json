@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "name": "mdx-spec",
+  "version": "1.0.0",
+  "repository": "mdx-js/specification",
+  "author": "John Otander <johnotander@gmail.com>",
+  "license": "MIT"
+}
