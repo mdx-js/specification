@@ -377,6 +377,7 @@ These projects define the syntax which MDX blends together (MD and JSX).
 
 - [IA Markdown Content Blocks](https://github.com/iainc/Markdown-Content-Blocks)
 - [Idyll: Markup language for interactive documents](https://idyll-lang.org)
+- [Literate Programming](https://en.wikipedia.org/wiki/Literate_programming)
 - [Literate CoffeeScript](https://coffeescript.org/#literate)
 
 ### Is your work missing?
